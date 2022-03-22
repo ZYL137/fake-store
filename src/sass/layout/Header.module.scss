@@ -1,0 +1,213 @@
+@use "../general.module";
+
+.header {
+  width: 100%;
+  padding: 0 2rem;
+  background: #fff;
+  border-bottom: 1px solid general.$color-primary-light--1;
+  position: sticky;
+  top: 0;
+  z-index: 100;
+
+  &__logo {
+    max-width: 10rem;
+  }
+
+  &__icon {
+    width: 1.8rem;
+    height: 1.8rem;
+    stroke-width: 1px;
+    cursor: pointer;
+  }
+
+  &__nav {
+    height: 4rem;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+
+    @media only screen and (max-width: general.$bp-small) {
+      height: 5rem;
+    }
+
+    &-links {
+      display: flex;
+      align-items: center;
+      list-style: none;
+      gap: 2rem;
+
+      @media only screen and (max-width: general.$bp-large) {
+        flex-direction: column;
+        gap: 0.5rem;
+        width: 30%;
+        height: 100vh;
+        padding-top: 2rem;
+        font-size: 3.5rem;
+        line-height: 1;
+        background: #fff;
+        position: fixed;
+        top: 0;
+        right: 0;
+        transform: translateX(100%);
+        z-index: 200;
+        opacity: 0;
+        pointer-events: none;
+        visibility: hidden;
+        transition: all 300ms ease-in-out;
+      }
+    }
+
+    &-link {
+      &:link,
+      &:visited {
+        color: inherit;
+        text-decoration: none;
+        font-size: 1.2rem;
+      }
+      &:hover,
+      &:active {
+        border-bottom: 2px solid general.$color-primary-dark;
+      }
+    }
+  }
+
+  &__option {
+    flex: 0 0 10rem;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 1rem;
+    position: relative;
+
+    &-btn {
+      border: 0;
+      background: none;
+      cursor: pointer;
+    }
+
+    &-link {
+      &:link,
+      &:visited,
+      &:hover,
+      &:active {
+        color: inherit;
+        text-decoration: none;
+      }
+    }
+
+    &-cart {
+      display: flex;
+      align-items: center;
+      &-count {
+        font-size: 1rem;
+      }
+    }
+
+    &-user {
+      height: max-content;
+      text-align: center;
+      background-color: #fff;
+      box-shadow: 0 3px 10px rgb(0 0 0 / 20%);
+      position: fixed;
+      top: 6%;
+      right: 7.2rem;
+      z-index: 101;
+      width: 0;
+      opacity: 0;
+      pointer-events: none;
+      transition: opacity 200ms ease-out;
+
+      &:focus {
+        opacity: 1;
+        width: 6rem;
+        outline: 0;
+        pointer-events: auto;
+      }
+
+      &:after {
+        content: "";
+        height: 0;
+        width: 0;
+        position: absolute;
+        bottom: 100%;
+        left: 79%;
+        border: solid 8px transparent;
+        pointer-events: none;
+        border-bottom-color: #fff;
+      }
+
+      & p {
+        padding: 0.3rem;
+        cursor: pointer;
+        transition: background 200ms ease-out;
+        &:hover {
+          background: #ece9e9;
+        }
+      }
+    }
+  }
+
+  &__menu {
+    &-btn {
+      border: 0;
+      background: none;
+      position: relative;
+      margin-top: 1rem;
+      margin-right: -1rem;
+      z-index: 300;
+      display: none;
+      cursor: pointer;
+
+      @media only screen and (max-width: general.$bp-large) {
+        display: inline-block;
+      }
+
+      & span,
+      & span::before,
+      & span::after {
+        width: 1.7rem;
+        height: 2px;
+        background-color: general.$color-primary-dark;
+        display: inline-block;
+      }
+
+      & span::before,
+      & span::after {
+        content: "";
+        position: absolute;
+        left: 0;
+        transition: background-color 200ms ease-out, transform 200ms ease-out;
+      }
+
+      & span::before {
+        top: -0.7rem;
+      }
+      & span::after {
+        top: 0.7rem;
+      }
+    }
+
+    &--open {
+      & .header__nav-links {
+        opacity: 1;
+        pointer-events: auto;
+        visibility: visible;
+        transform: translateX(0);
+      }
+
+      & .header__menu-btn {
+        & span {
+          background-color: transparent;
+        }
+        & span::before {
+          top: 0;
+          transform: rotate(135deg);
+        }
+        & span::after {
+          top: 0;
+          transform: rotate(-135deg);
+        }
+      }
+    }
+  }
+}

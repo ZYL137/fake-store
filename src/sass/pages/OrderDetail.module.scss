@@ -1,0 +1,62 @@
+@use "../general.module";
+
+.order-detail {
+  width: 85%;
+  padding: 2rem;
+  margin: 0 auto;
+
+  @media only screen and (max-width: general.$bp-small) {
+    padding: 1rem;
+  }
+
+  &__info {
+    margin: 1rem 0;
+    display: flex;
+    justify-content: space-between;
+
+    @media only screen and (max-width: general.$bp-small) {
+      flex-direction: column;
+    }
+  }
+
+  &__items {
+    border-top: 1px solid #ccc;
+    margin-bottom: 1rem;
+  }
+
+  &__item {
+    padding: 2rem 0;
+    border-bottom: 1px solid #ccc;
+    display: flex;
+    gap: 1rem;
+
+    &-img {
+      padding: 1rem;
+      & img {
+        max-width: 10rem;
+        object-fit: contain;
+      }
+    }
+    &-info {
+      display: flex;
+      flex-direction: column;
+      gap: 0.5rem;
+    }
+    &-link {
+      @include general.link-black;
+      &:hover {
+        color: #000;
+      }
+    }
+  }
+
+  &__amount {
+    display: flex;
+    flex-direction: column;
+    gap: 0.5rem;
+    text-align: right;
+    & span {
+      font-weight: 600;
+    }
+  }
+}

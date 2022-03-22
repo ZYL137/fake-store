@@ -1,0 +1,39 @@
+@use "./sass/general.module";
+@import url("https://fonts.googleapis.com/css2?family=Titillium+Web:wght@400;600;700&display=swap");
+
+*,
+*::before,
+*::after {
+  margin: 0;
+  padding: 0;
+  box-sizing: inherit;
+}
+
+html {
+  box-sizing: border-box;
+  overflow-x: hidden;
+
+  @media only screen and (max-width: general.$bp-largest) {
+    font-size: 87.5%;
+  }
+
+  @media only screen and (max-width: general.$bp-large) {
+    font-size: 72%;
+  }
+  @media only screen and (max-width: general.$bp-small) {
+    font-size: 62.5%;
+  }
+}
+
+body {
+  height: 100%;
+  color: general.$color-primary-dark;
+  font-family: "Titillium Web", sans-serif;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+code {
+  font-family: source-code-pro, Menlo, Monaco, Consolas, "Courier New",
+    monospace;
+}

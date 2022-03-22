@@ -1,0 +1,49 @@
+@use "../general.module";
+
+.search-bar {
+  width: 2rem;
+  height: 2.5rem;
+  display: flex;
+  align-items: center;
+  position: relative;
+  transition: all 200ms ease-in-out;
+
+  &__input {
+    width: 90%;
+    padding: 0.5rem;
+    font-size: 1rem;
+    background: transparent;
+    border: 0;
+    position: absolute;
+    top: 0;
+    bottom: 0;
+    left: 0;
+    opacity: 0;
+  }
+  &__input:focus {
+    outline: 0;
+  }
+
+  &__submit {
+    background: transparent;
+    border: 0;
+    cursor: pointer;
+    margin-left: auto;
+
+    &-icon {
+      width: 1.8rem;
+      height: 1.8rem;
+      stroke-width: 1px;
+    }
+  }
+
+  &:focus-within {
+    width: 20rem;
+    background-color: rgba(general.$color-primary-light--1, 0.5);
+    border-bottom: 1px solid #ccc;
+
+    .search-bar__input {
+      opacity: 1;
+    }
+  }
+}

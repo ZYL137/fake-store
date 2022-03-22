@@ -1,0 +1,80 @@
+@use "../../sass/general.module";
+
+.register {
+  &__container {
+    max-width: 40rem;
+    padding: 1.5rem;
+    margin: 0 auto;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+  }
+
+  &__logo {
+    width: 15rem;
+    object-fit: contain;
+    margin: 2rem auto;
+  }
+
+  &__title {
+    font-weight: 600;
+    margin-bottom: 1.5rem;
+  }
+
+  &__form {
+    padding: 1.5rem;
+    margin-bottom: 2rem;
+    font-size: 1rem;
+    display: flex;
+    flex-direction: column;
+    gap: 0.5rem;
+    border: 1px solid lightgray;
+
+    &-group {
+      display: flex;
+      flex-direction: column;
+    }
+
+    & label {
+      font-weight: 500;
+    }
+  }
+  &__input {
+    height: 2rem;
+    margin-bottom: 0.5rem;
+    font-size: inherit;
+    border: 1px solid #a6a6a6;
+
+    &--invalid {
+      border-color: #d00;
+      box-shadow: 0 0 0 3px rgb(221 0 0 / 10%) inset;
+    }
+  }
+  &__btn {
+    @include general.btn;
+    margin-bottom: 0.5rem;
+  }
+
+  &__link {
+    @include general.link-blue;
+    font-weight: 500;
+    margin-left: 3px;
+  }
+
+  &__text {
+    font-size: 1rem;
+    line-height: 1.5;
+
+    &--sm {
+      font-size: 0.5rem;
+      margin-top: -0.5rem;
+      margin-bottom: 0.5rem;
+    }
+    &--error {
+      color: #d00;
+      font-size: 0.5rem;
+      margin-top: -0.5rem;
+      font-weight: 500;
+    }
+  }
+}

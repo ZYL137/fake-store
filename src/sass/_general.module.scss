@@ -1,0 +1,92 @@
+// COLOR VARIABLES
+$color-primary-light--1: #ece9e9;
+$color-primary-light--2: #d2caca;
+$color-primary-light--3: #886f6f;
+
+$color-primary: #694e4e;
+$color-primary-dark: #1f1717;
+$color-text: #0a0808;
+
+// RESPONSIVE BREAKPOINTS
+$bp-largest: 75em; // 1200px
+$bp-large: 62.5em; // 1000px
+$bp-medium: 43.75em; // 700px;
+$bp-small: 31.25em; // 500px;
+$bp-smallest: 23.75em; // 380px;
+
+// MIXINS
+@mixin rating {
+  font-size: 0.8rem;
+  font-weight: 500;
+  color: #968383;
+  display: flex;
+  align-items: center;
+  gap: 3px;
+}
+
+@mixin btn {
+  width: 100%;
+  padding: 0.5rem 1rem;
+  background: $color-primary-dark;
+  border: 3px solid transparent;
+  font-size: 1rem;
+  color: #fff;
+  cursor: pointer;
+  transition: transform 200ms ease-out;
+
+  &:hover {
+    transform: translateY(-1px);
+  }
+}
+
+@mixin link-black {
+  &:link,
+  &:visited {
+    display: inline-block;
+    text-decoration: none;
+    color: $color-primary-dark;
+    transition: color 0.15s ease-out;
+  }
+  &:hover,
+  &:active {
+    color: $color-primary;
+  }
+}
+
+@mixin link-blue {
+  &:link,
+  &:visited {
+    color: #398ab9;
+    display: inline-block;
+    text-decoration: none;
+    border-bottom: 1px solid transparent;
+
+    transition: border-color 0.2s ease-out;
+  }
+  &:hover,
+  &:active {
+    border-color: #398ab9;
+  }
+}
+
+@mixin link-white {
+  &:link,
+  &:visited {
+    width: 10rem;
+    height: 4rem;
+    padding: 1rem 2rem;
+    margin-top: 1rem;
+    text-decoration: none;
+    color: #333;
+    background-color: rgba(255, 255, 255, 0.8);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    transition: all 0.2s ease-out;
+  }
+  &:hover,
+  &:active {
+    color: #111;
+    background-color: #fff;
+  }
+}

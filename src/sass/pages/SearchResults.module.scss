@@ -1,0 +1,33 @@
+@use "../../sass/general.module";
+
+.sarch-results {
+  height: max-content;
+  background-color: #fff;
+
+  &__not-found {
+    text-align: center;
+    padding-top: 3rem;
+    & span {
+      color: general.$color-primary-light--3;
+    }
+  }
+
+  &__content {
+    width: 85rem;
+    padding: 1rem;
+    margin: 0 auto;
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 2rem;
+  }
+
+  &__counts {
+    margin: 1rem 2rem;
+    color: general.$color-primary-light--3;
+
+    & span {
+      color: general.$color-primary;
+      font-weight: bold;
+    }
+  }
+}

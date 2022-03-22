@@ -1,0 +1,98 @@
+@use "../../sass/general.module";
+
+.product-detail {
+  max-width: 70rem;
+  padding: 5rem 2rem;
+  margin: 0 auto;
+  font-size: 1.2rem;
+  display: flex;
+  justify-content: center;
+  gap: 3rem;
+
+  @media only screen and (max-width: general.$bp-medium) {
+    max-width: 90%;
+    padding: 2rem 1rem;
+    flex-direction: column;
+    align-items: center;
+  }
+
+  &__img-box {
+    flex: 0 1 22rem;
+    padding: 3rem 0;
+    text-align: center;
+
+    @media only screen and (max-width: general.$bp-small) {
+      padding: 1rem 0;
+    }
+
+    & img {
+      max-width: 90%;
+      height: 30rem;
+      object-fit: contain;
+    }
+  }
+
+  &__info {
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 2rem;
+    position: relative;
+  }
+  &__title {
+    font-size: 2rem;
+  }
+
+  &__description {
+    font-size: 0.9rem;
+    line-height: 1.5;
+    & h4 {
+      font-size: 1rem;
+    }
+  }
+
+  &__rating {
+    @include general.rating;
+  }
+
+  &__btn {
+    @include general.btn;
+  }
+
+  &__price {
+    font-weight: bold;
+  }
+
+  &__icons {
+    position: absolute;
+    top: 25%;
+    right: 0;
+  }
+
+  &__shipping {
+    display: flex;
+    align-items: center;
+    gap: 3px;
+    font-weight: 700;
+  }
+
+  &__actions {
+    font-weight: bold;
+    color: #444;
+    border: 1px solid #d5d9d9;
+    border-radius: 8px;
+    padding: 5px 10px;
+    display: flex;
+    gap: 0.8rem;
+    &--decrease {
+      cursor: pointer;
+    }
+    &--increase {
+      cursor: pointer;
+    }
+    &--hide {
+      visibility: hidden;
+    }
+  }
+}

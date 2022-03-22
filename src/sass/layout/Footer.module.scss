@@ -1,0 +1,53 @@
+@use "../general.module";
+
+.footer {
+  width: 100%;
+  min-height: 12rem;
+  background-color: general.$color-primary-dark;
+
+  &__content {
+    max-width: 85rem;
+    padding: 1rem;
+    margin: 0.5rem auto;
+    display: grid;
+    grid-template-columns: repeat(3, 1fr) 8rem;
+    gap: 0.5rem;
+
+    @media only screen and (max-width: general.$bp-small) {
+      grid-template-columns: repeat(3, 1fr);
+      row-gap: 1.5rem;
+    }
+  }
+
+  &__column {
+    display: flex;
+    flex-direction: column;
+    gap: 0.5rem;
+
+    & h3 {
+      color: #fff;
+    }
+  }
+
+  &__links {
+    list-style: none;
+    color: #ddd;
+    font-size: 0.8rem;
+
+    & li:hover {
+      cursor: pointer;
+      text-decoration: underline;
+    }
+  }
+
+  &__icons {
+    color: #e1dcdc;
+    align-self: center;
+    display: flex;
+    gap: 3px;
+    @media only screen and (max-width: general.$bp-small) {
+      grid-column: 1/-1;
+      grid-row: 1/2;
+    }
+  }
+}

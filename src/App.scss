@@ -1,0 +1,16 @@
+@use "./sass/general.module";
+
+.app {
+  background-color: #fff;
+  display: flex;
+  flex-direction: column;
+}
+
+.content {
+  flex: 1 0 auto;
+  min-height: 100vh;
+}
+
+.footer {
+  flex-shrink: 0 0;
+}

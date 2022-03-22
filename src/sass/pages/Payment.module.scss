@@ -1,0 +1,66 @@
+@use "../general.module";
+
+.payment {
+  width: 100%;
+  margin: 0 auto;
+  display: flex;
+  gap: 2rem;
+  background-color: #fff;
+
+  @media only screen and (max-width: general.$bp-large) {
+    flex-direction: column;
+    gap: 0;
+  }
+
+  &__title {
+    margin: 2rem 0;
+  }
+
+  &__items {
+    padding: 2rem 4rem;
+    flex: 0.7;
+  }
+  &__details {
+    flex: 0.3;
+    width: 100%;
+    padding: 3rem;
+    background-color: rgba(240, 240, 240, 0.589);
+    display: flex;
+    flex-direction: column;
+    gap: 2rem;
+
+    @media only screen and (max-width: general.$bp-large) {
+      border-top: 1px solid #ccc;
+    }
+  }
+
+  &__heading {
+    margin-bottom: 0.5rem;
+  }
+
+  &__price {
+    display: flex;
+    justify-content: space-between;
+  }
+
+  &__form {
+    display: flex;
+    flex-direction: column;
+  }
+
+  &__btn {
+    @include general.btn;
+    margin: 1rem 0;
+  }
+
+  &__error {
+    font-size: 0.9rem;
+    font-weight: bold;
+    color: #fa755a;
+  }
+}
+
+.link {
+  @include general.link-blue;
+  margin: 0 -2rem;
+}
