@@ -2,7 +2,7 @@ import { screen } from "@testing-library/react";
 import { render } from "./test-util";
 import App from "./App";
 
-describe.skip("<App/>", () => {
+describe("<App/>", () => {
   test("renders home page", async () => {
     render(<App />, { initialRoutes: ["/"] });
     expect(await screen.findAllByText(/shop now/i)).toHaveLength(2);
