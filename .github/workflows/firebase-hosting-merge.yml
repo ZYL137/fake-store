@@ -23,7 +23,7 @@ name: Firebase Deploy
 on:
   push:
     branches:
-      - master
+      - main
 jobs:
   build:
     name: Build
@@ -57,8 +57,9 @@ jobs:
           name: build
           path: build
       - name: Deploy to Firebase
-        uses: w9jds/firebase-action@master
+      - uses: FirebaseExtended/action-hosting-deploy@v0
         with:
-          args: deploy --only hosting
-        env:
-          FIREBASE_TOKEN: ${{ secrets.FIREBASE_TOKEN }}
+          repoToken: "${{ secrets.GITHUB_TOKEN }}"
+          firebaseServiceAccount: "${{ secrets.FIREBASE_SERVICE_ACCOUNT_CLONE_76CF8 }}"
+          channelId: live
+          projectId: clone-76cf8
