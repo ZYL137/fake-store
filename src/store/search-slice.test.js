@@ -2,7 +2,7 @@ import searchReducer, { searchActions } from "./search-slice";
 
 const initialState = {
   query: "",
-  results: [],
+  results: null,
 };
 
 describe("Search reducer", () => {

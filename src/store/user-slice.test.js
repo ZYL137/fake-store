@@ -40,7 +40,7 @@ describe("User reducer", () => {
     expect(
       userReducer(
         previousState,
-        userActions.setUserOrders([
+        userActions.setOrders([
           {
             id: "123",
             data: { items: ["apple"], amount: 10 },
