@@ -5,7 +5,7 @@ import App from "./App";
 describe("<App/>", () => {
   test("renders home page", async () => {
     render(<App />, { initialRoutes: ["/"] });
-    expect(await screen.findAllByText(/shop now/i)).toHaveLength(2);
+    expect(await screen.findAllByText(/shop now/i)).toHaveLength(3);
   });
 
   test("renders all products", async () => {
@@ -33,12 +33,12 @@ describe("<App/>", () => {
 
   test("renders checkout page", () => {
     render(<App />, { initialRoutes: ["/checkout"] });
-    expect(screen.getByText(/basket/i)).toBeInTheDocument();
+    expect(screen.getByText(/cart/i)).toBeInTheDocument();
   });
 
   test("renders login page", async () => {
     render(<App />, { initialRoutes: ["/login"] });
-    expect(screen.getByText("Sign-In")).toBeInTheDocument();
+    expect(screen.getByText("Log in")).toBeInTheDocument();
   });
 
   test("renders register page", async () => {
@@ -47,7 +47,6 @@ describe("<App/>", () => {
   });
 
   test("renders not found page if path is not defined", () => {
-    // render(<App />, { route: "/something-that-does-not-match" });
     render(<App />, { initialRoutes: ["/something-that-does-not-match"] });
     expect(
       screen.getByText(`Sorry, we couldn't found the page.`)
