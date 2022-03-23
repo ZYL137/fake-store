@@ -33,7 +33,7 @@ describe("<App/>", () => {
 
   test("renders login page", async () => {
     render(<App />, { initialRoutes: ["/login"] });
-    expect(screen.getByText("Log in")).toBeInTheDocument();
+    expect(screen.getAllByText("Log in")).toBeInTheDocument();
   });
 
   test("renders register page", async () => {
