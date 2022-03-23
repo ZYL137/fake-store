@@ -64,12 +64,10 @@ function Home() {
         {!httpState.loding && (
           <section className={styles.home__products}>
             <h3 className={styles.home__heading}>NEW ARRIVALS</h3>
-            <div className={styles["home__products-content"]}>
+            <div className={styles["home__products-container"]}>
               {httpState.data &&
                 httpState.data.map((product) => (
-                  <div key={product.id} className={styles["home__product"]}>
-                    <ProductItem product={product} />
-                  </div>
+                  <ProductItem product={product} key={product.id} />
                 ))}
             </div>
           </section>
