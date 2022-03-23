@@ -60,7 +60,7 @@ function Payment() {
     e.preventDefault();
     if (!stripe || !elements) return;
     setProcessing(true);
-    const payload = await stripe
+    await stripe
       .confirmCardPayment(clientSecret, {
         payment_method: {
           card: elements.getElement(CardElement),
