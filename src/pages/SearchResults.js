@@ -44,7 +44,7 @@ function SearchResults() {
         </h1>
       )}
       {searchData.results && searchData.results.length >= 1 && (
-        <div>
+        <>
           <div className={styles["sarch-results__counts"]}>
             <p>
               {searchData.results.length} results for
@@ -56,7 +56,7 @@ function SearchResults() {
               <ProductItem product={result} key={result.id} />
             ))}
           </div>
-        </div>
+        </>
       )}
     </div>
   );

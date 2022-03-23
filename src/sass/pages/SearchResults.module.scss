@@ -1,8 +1,8 @@
 @use "../../sass/general.module";
 
 .sarch-results {
-  height: max-content;
-  background-color: #fff;
+  width: 75%;
+  margin: 0 auto;
 
   &__not-found {
     text-align: center;
@@ -13,16 +13,25 @@
   }
 
   &__content {
-    width: 85rem;
-    padding: 1rem;
-    margin: 0 auto;
+    max-width: 100%;
     display: grid;
     grid-template-columns: repeat(4, 1fr);
-    gap: 2rem;
+    justify-content: center;
+    gap: 1rem;
+
+    @media only screen and (max-width: general.$bp-largest) {
+      grid-template-columns: repeat(3, 1fr);
+    }
+    @media only screen and (max-width: general.$bp-medium) {
+      grid-template-columns: repeat(2, 1fr);
+    }
+    @media only screen and (max-width: general.$bp-small) {
+      grid-template-columns: 1fr;
+    }
   }
 
   &__counts {
-    margin: 1rem 2rem;
+    margin: 1rem;
     color: general.$color-primary-light--3;
 
     & span {
