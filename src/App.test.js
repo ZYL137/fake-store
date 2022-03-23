@@ -8,11 +8,6 @@ describe("<App/>", () => {
     expect(await screen.findAllByText(/shop now/i)).toHaveLength(3);
   });
 
-  test("renders all products", async () => {
-    render(<App />, { initialRoutes: ["/products"] });
-    expect(await screen.findByText(/test product/i)).toBeInTheDocument();
-  });
-
   test("renders products by category", async () => {
     render(<App />, { initialRoutes: ["/products/category/test"] });
     expect(await screen.findByText(/test product/i)).toBeInTheDocument();
