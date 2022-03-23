@@ -56,16 +56,17 @@ jobs:
         with:
           name: build
           path: build
-      - name: Deploy to Firebase
-          uses: w9jds/firebase-action@master
-          with:
-            args: deploy --only hosting
-          env:
-            FIREBASE_TOKEN: ${{ secrets.FIREBASE_TOKEN }}
+      - name:
+          Deploy to Firebase
+          # uses: w9jds/firebase-action@master
+          # with:
+          #   args: deploy --only hosting
+          # env:
+          #   FIREBASE_TOKEN: ${{ secrets.FIREBASE_TOKEN }}
 
-        # uses: FirebaseExtended/action-hosting-deploy@v0
-        # with:
-        #   repoToken: "${{ secrets.GITHUB_TOKEN }}"
-        #   firebaseServiceAccount: "${{ secrets.FIREBASE_SERVICE_ACCOUNT_CLONE_76CF8 }}"
-        #   channelId: live
-        #   projectId: clone-76cf8
+        uses: FirebaseExtended/action-hosting-deploy@v0
+        with:
+          repoToken: "${{ secrets.GITHUB_TOKEN }}"
+          firebaseServiceAccount: "${{ secrets.FIREBASE_SERVICE_ACCOUNT_CLONE_76CF8 }}"
+          channelId: live
+          projectId: clone-76cf8
