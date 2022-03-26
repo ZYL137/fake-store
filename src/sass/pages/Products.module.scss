@@ -4,6 +4,10 @@
   width: 80%;
   margin: 0 auto;
 
+  @media only screen and (max-width: general.$bp-small) {
+    width: 100%;
+  }
+
   & h1 {
     text-align: center;
     margin: 1rem 0 4rem 0;

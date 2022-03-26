@@ -2,26 +2,17 @@
 
 .header {
   width: 100%;
-  padding: 0 2rem;
+  padding: 0 1rem;
+
   background: #fff;
   border-bottom: 1px solid general.$color-primary-light--1;
   position: sticky;
   top: 0;
   z-index: 100;
 
-  &__logo {
-    max-width: 10rem;
-  }
-
-  &__icon {
-    width: 2rem;
-    height: 2rem;
-    stroke-width: 1px;
-    cursor: pointer;
-  }
-
   &__nav {
     height: 4rem;
+
     display: flex;
     justify-content: space-between;
     align-items: center;
@@ -69,6 +60,19 @@
         border-bottom: 2px solid general.$color-primary-dark;
       }
     }
+  }
+
+  &__logo {
+    width: 9rem;
+    height: 100%;
+    object-fit: contain;
+  }
+
+  &__icon {
+    width: 2rem;
+    height: 2rem;
+    stroke-width: 1px;
+    cursor: pointer;
   }
 
   &__option {
@@ -153,10 +157,9 @@
       background: none;
       position: relative;
       margin-top: 1rem;
-      margin-right: -1rem;
       z-index: 300;
-      display: none;
       cursor: pointer;
+      display: none;
 
       @media only screen and (max-width: general.$bp-large) {
         display: inline-block;
@@ -169,6 +172,7 @@
         height: 2px;
         background-color: general.$color-primary-dark;
         display: inline-block;
+        transition: background-color 200ms ease-out;
       }
 
       & span::before,
@@ -176,7 +180,7 @@
         content: "";
         position: absolute;
         left: 0;
-        transition: background-color 200ms ease-out, transform 200ms ease-out;
+        transition: transform 200ms ease-out;
       }
 
       & span::before {

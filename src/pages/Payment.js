@@ -3,7 +3,7 @@ import { useEffect, useState } from "react";
 import CurrencyFormat from "react-currency-format";
 import CartItem from "../components/Cart/CartItem";
 import Loader from "../components/UI/Loader";
-import { customAxios } from "../axios";
+import { firebaseAxios } from "../axios";
 import { useHistory } from "react-router-dom";
 import { useSelector, useDispatch } from "react-redux";
 import { cartActions } from "../store/cart-slice";
@@ -30,7 +30,7 @@ function Payment() {
   useEffect(() => {
     // generate the special stripe secret which allow us to charge customers
     const getClientSecret = async () => {
-      const res = await customAxios({
+      const res = await firebaseAxios({
         method: "POST",
         // stripe expects the total in a currencies subunits
         url: `payments/create?total=${(totalAmount * 100).toFixed(0)}`,
@@ -45,11 +45,10 @@ function Payment() {
   const cardStyle = {
     style: {
       base: {
-        backgroundColor: "#f0eded",
-        color: "#0a0808",
+        backgroundColor: "#eee",
+
         fontSize: "16px",
         "::placeholder": {
-          color: "#0a0808",
           fontSize: "13px",
         },
       },
@@ -68,7 +67,7 @@ function Payment() {
       })
       .then(({ paymentIntent }) => {
         dispatch(sendUserOrdersData(user, paymentIntent, items));
-
+        setDisabled(true);
         setSucceeded(true);
         setProcessing(false);
         setError(null);
@@ -139,14 +138,17 @@ function Payment() {
             />
           </div>
         </div>
-        <div className={styles.payment__form}>
+        <div>
           <h3 className={styles.payment__heading}>Payment Details</h3>
-          <form onSubmit={formSubmitHandler}>
+          <form className={styles.payment__form} onSubmit={formSubmitHandler}>
             <CardElement options={cardStyle} onChange={cardChangeHandler} />
             {error && <div className={styles.payment__error}>{error}</div>}
             <button
-              disabled={processing || disabled || succeeded || error}
+              disabled={disabled || processing || succeeded || error}
               className={styles.payment__btn}
+              aria-disabled={
+                disabled || processing || succeeded || error ? true : false
+              }
             >
               <span>{processing ? "Processing..." : "Buy Now"}</span>
             </button>

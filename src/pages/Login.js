@@ -22,17 +22,18 @@ function Login() {
     auth
       .signInWithEmailAndPassword(email, password)
       .then(() => {
-        history.push("/");
         setIsLoading(false);
+        history.push("/");
       })
       .catch((err) => {
+        setIsLoading(false);
         const errorCode = err.code;
         let errorMessage;
         if (errorCode === "auth/user-not-found" || "auth/invalid-email") {
           errorMessage = "Incorrect email. Please try again.";
         } else if (errorCode === "auth/wrong-password") {
           errorMessage = "Incorrect password. Please try again.";
-        } else if (errorCode === "auth/invalid-email") setIsLoading(false);
+        }
         setIsError(errorMessage);
         alert(errorMessage);
       });
@@ -42,7 +43,7 @@ function Login() {
     <div className={styles.login}>
       <Link to="/">
         <img
-          src="../assets/logo.png"
+          src="../../assets/logo.avif"
           alt="Fake store logo"
           className={styles.login__logo}
         />
@@ -74,7 +75,7 @@ function Login() {
               required
             />
           </div>
-          {!isLoading && <button className={styles.login__btn}>Log in</button>}
+          <button className={styles.login__btn}>Log in</button>
           {isLoading && <Loader />}
         </form>
         <p className={styles.login__text}>

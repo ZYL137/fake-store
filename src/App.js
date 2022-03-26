@@ -4,13 +4,10 @@ import { Route, Switch, useLocation } from "react-router-dom";
 import { auth } from "./firebase";
 import Checkout from "./pages/Checkout";
 import Header from "./components/Layout/Header";
-
 import Home from "./pages/Home";
 import Login from "./pages/Login";
 import Register from "./pages/Register";
 import Products from "./pages/Products";
-import ProductDetail from "./pages/ProductDetail";
-import NotFound from "./pages/NotFound";
 import { loadStripe } from "@stripe/stripe-js";
 import { Elements } from "@stripe/react-stripe-js";
 import Footer from "./components/Layout/Footer";
@@ -35,6 +32,8 @@ function App() {
   const OrderDetail = lazy(() => import("./pages/OrderDetail"));
   const SearchResults = lazy(() => import("./pages/SearchResults"));
   const Payment = lazy(() => import("./pages/Payment"));
+  const NotFound = lazy(() => import("./pages/NotFound"));
+  const ProductDetail = lazy(() => import("./pages/ProductDetail"));
   ///////////////////////////////////////////////////////////////////////
   const location = useLocation();
   const dispatch = useDispatch();
@@ -104,7 +103,9 @@ function App() {
             <Products />
           </Route>
           <Route path="/products/:productId" exact>
-            <ProductDetail />
+            <Suspense fallback={<Loader />}>
+              <ProductDetail />
+            </Suspense>
           </Route>
           <Route path="/search/:query" exact>
             <Suspense fallback={<Loader />}>
@@ -135,10 +136,14 @@ function App() {
             <Login />
           </Route>
           <Route path="/register" exact>
-            <Register />
+            <Suspense fallback={<Loader />}>
+              <Register />
+            </Suspense>
           </Route>
           <Route paht="*">
-            <NotFound />
+            <Suspense fallback={<Loader />}>
+              <NotFound />
+            </Suspense>
           </Route>
         </Switch>
       </div>

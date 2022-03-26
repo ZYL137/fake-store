@@ -1,7 +1,7 @@
 @use "../general.module";
 
 .order-detail {
-  width: 85%;
+  max-width: 80rem;
   padding: 2rem;
   margin: 0 auto;
 
@@ -20,34 +20,8 @@
   }
 
   &__items {
-    border-top: 1px solid #ccc;
-    margin-bottom: 1rem;
-  }
-
-  &__item {
-    padding: 2rem 0;
     border-bottom: 1px solid #ccc;
-    display: flex;
-    gap: 1rem;
-
-    &-img {
-      padding: 1rem;
-      & img {
-        max-width: 10rem;
-        object-fit: contain;
-      }
-    }
-    &-info {
-      display: flex;
-      flex-direction: column;
-      gap: 0.5rem;
-    }
-    &-link {
-      @include general.link-black;
-      &:hover {
-        color: #000;
-      }
-    }
+    margin-bottom: 1rem;
   }
 
   &__amount {

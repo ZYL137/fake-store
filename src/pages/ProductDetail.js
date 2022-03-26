@@ -105,10 +105,10 @@ function ProductDetail() {
               Add to Cart
             </button>
 
-            <p className={styles["product-detail__description"]}>
-              <h4>DESCRIPTION:</h4>
+            <div className={styles["product-detail__description"]}>
+              <h3>DESCRIPTION:</h3>
               {httpState.data.description}
-            </p>
+            </div>
           </div>
         </>
       )}

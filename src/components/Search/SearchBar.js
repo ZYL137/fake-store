@@ -1,6 +1,5 @@
 import { useState } from "react";
 import { useHistory } from "react-router-dom";
-// import SearchIcon from "@mui/icons-material/Search";
 import { SearchIcon } from "@heroicons/react/outline";
 import styles from "../../sass/components/SearchBar.module.scss";
 
@@ -13,6 +12,7 @@ function SearchBar() {
   };
 
   const searchClickHandler = (e) => {
+    // document.querySelector(".search-bar__input").blur();
     if (query.trim().length < 1) {
       history.push(`/`);
     } else {

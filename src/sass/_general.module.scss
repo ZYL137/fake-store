@@ -18,7 +18,7 @@ $bp-smallest: 23.75em; // 380px;
 @mixin rating {
   font-size: 0.8rem;
   font-weight: 500;
-  color: #968383;
+  color: $color-primary;
   display: flex;
   align-items: center;
   gap: 3px;
@@ -27,15 +27,18 @@ $bp-smallest: 23.75em; // 380px;
 @mixin btn {
   width: 100%;
   padding: 0.5rem 1rem;
-  background: $color-primary-dark;
+  background: rgba($color-primary-dark, 0.9);
   border: 3px solid transparent;
   font-size: 1rem;
   color: #fff;
   cursor: pointer;
-  transition: transform 200ms ease-out;
+  transition: transform 200ms ease-out, background 200ms ease-out;
 
   &:hover {
-    transform: translateY(-1px);
+    background: $color-primary-dark;
+  }
+  &:active {
+    transform: translateY(1px);
   }
 }
 

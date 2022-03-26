@@ -34,30 +34,34 @@ function SearchResults() {
 
   return (
     <div className={styles["sarch-results"]}>
-      {!httpState.data && <Loader />}
-      {searchData.results !== null && searchData.results.length === 0 && (
-        <h1 className={styles["sarch-results__not-found"]}>
-          We're sorry! We couldn't find any results for <span>"{query}"</span>
-          .
-          <br />
-          Please try again
-        </h1>
-      )}
-      {searchData.results && searchData.results.length >= 1 && (
-        <>
-          <div className={styles["sarch-results__counts"]}>
-            <p>
-              {searchData.results.length} results for
-              <span> "{searchData.query}"</span>
-            </p>
-          </div>
-          <div className={styles["sarch-results__content"]}>
-            {searchData.results.map((result) => (
-              <ProductItem product={result} key={result.id} />
-            ))}
-          </div>
-        </>
-      )}
+      {httpState.loading && <Loader />}
+      {!httpState.loading &&
+        searchData.results !== null &&
+        searchData.results.length === 0 && (
+          <h1 className={styles["sarch-results__not-found"]}>
+            We're sorry! We couldn't find any results for <span>"{query}"</span>
+            .
+            <br />
+            Please try again
+          </h1>
+        )}
+      {!httpState.loading &&
+        searchData.results &&
+        searchData.results.length >= 1 && (
+          <>
+            <div className={styles["sarch-results__counts"]}>
+              <p>
+                {searchData.results.length} results for
+                <span> "{searchData.query}"</span>
+              </p>
+            </div>
+            <div className={styles["sarch-results__content"]}>
+              {searchData.results.map((result) => (
+                <ProductItem product={result} key={result.id} />
+              ))}
+            </div>
+          </>
+        )}
     </div>
   );
 }

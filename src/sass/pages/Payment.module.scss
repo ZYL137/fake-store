@@ -2,6 +2,8 @@
 
 .payment {
   width: 100%;
+  height: 100vh;
+  max-height: max-content;
   margin: 0 auto;
   display: flex;
   gap: 2rem;
@@ -22,7 +24,7 @@
   }
   &__details {
     flex: 0.3;
-    width: 100%;
+    height: 100%;
     padding: 3rem;
     background-color: rgba(240, 240, 240, 0.589);
     display: flex;
@@ -49,8 +51,16 @@
   }
 
   &__btn {
+    align-self: center;
     @include general.btn;
+    width: 70%;
     margin: 1rem 0;
+
+    &[aria-disabled="true"] {
+      background: rgb(226, 225, 225);
+      color: #000;
+      cursor: not-allowed;
+    }
   }
 
   &__error {

@@ -48,7 +48,6 @@ function Subtotal() {
       <button
         className={styles.subtotal__btn}
         aria-disabled={cartState.totalQuantity < 1 ? true : false}
-        aria-describedby="disabledReason"
         onClick={checkoutHandler}
       >
         Proceed to checkout

@@ -1,14 +1,11 @@
 @use "../../sass/general.module";
 
 .register {
-  &__container {
-    max-width: 40rem;
-    padding: 1.5rem;
-    margin: 0 auto;
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-  }
+  max-width: 28rem;
+  margin: 0 auto;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
 
   &__logo {
     width: 15rem;
@@ -19,6 +16,7 @@
   &__title {
     font-weight: 600;
     margin-bottom: 1.5rem;
+    text-align: center;
   }
 
   &__form {

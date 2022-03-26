@@ -1,6 +1,7 @@
 import { Link } from "react-router-dom";
 import { useDispatch } from "react-redux";
 import { cartActions } from "../../store/cart-slice";
+
 import styles from "../../sass/components/ProductItem.module.scss";
 
 function ProductItem({ product }) {
@@ -18,13 +19,11 @@ function ProductItem({ product }) {
 
   return (
     <div className={styles.product}>
-      <Link to={`/products/${product.id}`}>
-        <img
-          className={styles.product__img}
-          src={product.image}
-          alt={product.title}
-        />
-      </Link>
+      <div className={styles["product__img-box"]}>
+        <Link to={`/products/${product.id}`}>
+          <img src={product.image} alt={product.title} />
+        </Link>
+      </div>
       <div className={styles.product__info}>
         <Link to={`/products/${product.id}`} className={styles.product__link}>
           <h2 className={styles.product__title}>{product.title}</h2>

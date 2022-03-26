@@ -20,7 +20,7 @@ function CartItem({ item, hideBtn }) {
   };
 
   return (
-    <div className={styles["cart-item"]} key={item.id}>
+    <div className={styles["cart-item"]}>
       <div className={styles["cart-item__img-box"]}>
         <Link to={`/products/${item.id}`} className={styles["cart-item__link"]}>
           <img src={item.image} alt={item.title} />

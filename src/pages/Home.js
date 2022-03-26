@@ -1,8 +1,8 @@
 import { useEffect, useState } from "react";
 import { Link } from "react-router-dom";
-import Loader from "../components/UI/Loader";
-import ProductItem from "../components/Product/ProductItem";
 import useHttp from "../hooks/use-http";
+import ProductItem from "../components/Product/ProductItem";
+import ProductItemSkeleton from "../components/UI/ProductItemSkeleton";
 import styles from "../sass/pages/Home.module.scss";
 
 function Home() {
@@ -40,7 +40,12 @@ function Home() {
 
         <section className={styles.home__row}>
           <div className={styles["home__row-img"]}>
-            <img src="../../assets/jewelery1.jpg" alt="A diamond ring" />
+            <img
+              srcSet="../../assets/jewelery-1200.webp 1200w, ../../assets/jewelery-800.webp 800w"
+              sizes="(max-width:75em) 60vw, (max-width:43.75em) 95vw, 1050px"
+              src="../../assets/jewelery-1200.webp"
+              alt="A diamond ring"
+            />
           </div>
           <div className={styles["home__row-text"]}>
             <h3 className={styles.home__subheading}>JEWELERY</h3>
@@ -60,18 +65,21 @@ function Home() {
           </div>
         </section>
 
-        {httpState.loding && <Loader />}
-        {!httpState.loding && (
-          <section className={styles.home__products}>
-            <h3 className={styles.home__heading}>NEW ARRIVALS</h3>
+        <section className={styles.home__products}>
+          <h3 className={styles.home__heading}>NEW ARRIVALS</h3>
+          {httpState.loading &&
+            [1, 2, 3, 4].map((i) => {
+              return <ProductItemSkeleton key={i} />;
+            })}
+          {!httpState.loding && (
             <div className={styles["home__products-container"]}>
               {httpState.data &&
                 httpState.data.map((product) => (
                   <ProductItem product={product} key={product.id} />
                 ))}
             </div>
-          </section>
-        )}
+          )}
+        </section>
 
         <section className={styles.home__row}>
           <div className={styles["home__row-text"]}>
@@ -91,7 +99,9 @@ function Home() {
 
           <div className={styles["home__row-img"]}>
             <img
-              src="../../assets/men.jpg"
+              srcSet="../../assets/men-1200.webp 1200w, ../../assets/men-800.webp 800w"
+              sizes="(max-width:75em) 60vw, (max-width:43.75em) 95vw, 1050px"
+              src="../../assets/men-1200.webp"
               alt="Clothes, boots and accessories"
             />
           </div>

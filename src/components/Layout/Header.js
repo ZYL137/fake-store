@@ -42,7 +42,8 @@ function Header() {
         <Link to="/">
           <img
             className={styles.header__logo}
-            src="../../assets/logo.png"
+            // srcSet="../../assets/logo-1x.png 1x, ../../assets/logo-2x.png 2x"
+            src="../../assets/logo.avif"
             alt="Fake store logo"
           />
         </Link>
@@ -81,7 +82,7 @@ function Header() {
 
         <div className={styles["header__option"]}>
           <SearchBar />
-          <button className={styles["header__option-btn"]}>
+          <button className={styles["header__option-btn"]} aria-label="Account">
             <UserIcon
               className={styles.header__icon}
               onClick={showUserOptionsHandler}
@@ -125,13 +126,11 @@ function Header() {
               </span>
             </div>
           </Link>
-          <button className={styles["header__menu-btn"]}>
-            <span
-              className={styles["header__menu-icon"]}
-              onClick={setMobileMenuHandler}
-            >
-              &nbsp;
-            </span>
+          <button
+            className={styles["header__menu-btn"]}
+            onClick={setMobileMenuHandler}
+          >
+            <span className={styles["header__menu-icon"]}>&nbsp;</span>
           </button>
         </div>
       </nav>
