@@ -141,9 +141,7 @@ function App() {
             </Suspense>
           </Route>
           <Route paht="*">
-            <Suspense fallback={<Loader />}>
-              <NotFound />
-            </Suspense>
+            <NotFound />
           </Route>
         </Switch>
       </div>
