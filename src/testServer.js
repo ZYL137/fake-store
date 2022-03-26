@@ -16,9 +16,6 @@ const data = [
 ];
 
 const server = setupServer(
-  rest.get(`${baseUrl}/products/categories`, (req, res, ctx) => {
-    return res(ctx.status(200), ctx.json(["food", "shoes"]));
-  }),
   rest.get(`${baseUrl}/products`, (req, res, ctx) => {
     return res(ctx.status(200), ctx.json(data));
   }),

@@ -17,16 +17,16 @@ function ProductDetail() {
   const { httpState, sendRequest } = useHttp();
   const { productId } = useParams();
   const [quantity, setQuantity] = useState(1);
-  const [isMounted, setIsMounted] = useState(true);
+  // const [isMounted, setIsMounted] = useState(true);
 
   useEffect(() => {
-    if (isMounted) {
-      sendRequest(`/products/${productId}`);
-    }
-    return () => {
-      setIsMounted(false);
-    };
-  }, [sendRequest, productId, isMounted]);
+    // if (isMounted) {
+    sendRequest(`/products/${productId}`);
+    // }
+    // return () => {
+    //   setIsMounted(false);
+    // };
+  }, [sendRequest, productId]);
 
   const decreaseProductHandler = () => {
     setQuantity((prevQuantity) => prevQuantity - 1);

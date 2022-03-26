@@ -16,7 +16,11 @@ describe("<App/>", () => {
   test("renders product details page", async () => {
     render(<App />, { initialRoutes: ["/products/1"] });
     expect(
-      await screen.findByText("This is a test product")
+      await screen.findByText(
+        "This is a test product",
+        { exact: true },
+        { timeout: 1500 }
+      )
     ).toBeInTheDocument();
   });
 
@@ -33,18 +37,25 @@ describe("<App/>", () => {
 
   test("renders login page", async () => {
     render(<App />, { initialRoutes: ["/login"] });
-    expect(screen.getByRole("button", { name: "Log in" })).toBeInTheDocument();
+    expect(
+      await screen.findByRole("button", { name: "Log in" })
+    ).toBeInTheDocument();
   });
 
   test("renders register page", async () => {
     render(<App />, { initialRoutes: ["/register"] });
-    expect(screen.getByText(/create account/i)).toBeInTheDocument();
+    expect(await screen.findByText(/create account/i)).toBeInTheDocument();
   });
 
-  test("renders not found page if path is not defined", () => {
+  test("renders payment page", async () => {
+    render(<App />, { initialRoutes: ["/payment"] });
+    expect(await screen.findByText(/payment details/i)).toBeInTheDocument();
+  });
+
+  test("renders not found page if path is not defined", async () => {
     render(<App />, { initialRoutes: ["/something-that-does-not-match"] });
     expect(
-      screen.getByText(`Sorry, we couldn't found the page.`)
+      await screen.findByText(`Sorry, we couldn't found the page.`)
     ).toBeInTheDocument();
   });
 });
