@@ -6,9 +6,8 @@ const firebaseConfig = {
   projectId: "clone-76cf8",
   storageBucket: "clone-76cf8.appspot.com",
   messagingSenderId: "553289623785",
-  appId: "1:553289623785:web:f8d84c6c4f45fa3a1c2878",
+  appId: "1:553289623785:web:2ae5393de20fa1de1c2878",
 };
-
 const firebaseApp = firebase.initializeApp(firebaseConfig);
 
 const db = firebaseApp.firestore();

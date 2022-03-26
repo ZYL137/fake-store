@@ -29,9 +29,9 @@
 
   &__img-box {
     max-width: 10rem;
-    height: 12rem;
+    height: 13rem;
+    padding: 0 1rem;
     align-self: center;
-    overflow: hidden;
     @media only screen and (max-width: general.$bp-medium) {
       grid-column: 1/2;
       grid-row: 1/-1;

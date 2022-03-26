@@ -22,9 +22,9 @@ function Checkout() {
           <div className={styles.checkout__left}>
             <h2 className={styles.checkout__title}>Shopping Cart</h2>
             <div className={styles.checkout__details}>
-              <h4 className={styles.checkout__heading}>
+              <p className={styles.checkout__heading}>
                 {cartState.totalQuantity} ITEMS
-              </h4>
+              </p>
 
               {cartState.items.map((item) => (
                 <CartItem key={item.id} item={item} />
