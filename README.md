@@ -6,4 +6,4 @@
 | -------- | --- |
 | 測試密碼 |     |
 
-![Home page](https://raw.githubusercontent.com/ZYL137/fake-store/main/.github/img/sitemap.png)
+![Home page](https://github.com/ZYL137/fake-store/blob/main/.github/img/sitemap.png)

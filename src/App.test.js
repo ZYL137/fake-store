@@ -47,11 +47,6 @@ describe("<App/>", () => {
     expect(await screen.findByText(/create account/i)).toBeInTheDocument();
   });
 
-  test("renders payment page", async () => {
-    render(<App />, { initialRoutes: ["/payment"] });
-    expect(await screen.findByText(/payment details/i)).toBeInTheDocument();
-  });
-
   test("renders not found page if path is not defined", async () => {
     render(<App />, { initialRoutes: ["/something-that-does-not-match"] });
     expect(
