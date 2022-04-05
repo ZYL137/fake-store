@@ -67,18 +67,17 @@ function Home() {
 
         <section className={styles.home__products}>
           <h3 className={styles.home__heading}>NEW ARRIVALS</h3>
-          {httpState.loading &&
-            [1, 2, 3, 4].map((i) => {
-              return <ProductItemSkeleton key={i} />;
-            })}
-          {!httpState.loding && (
-            <div className={styles["home__products-container"]}>
-              {httpState.data &&
-                httpState.data.map((product) => (
-                  <ProductItem product={product} key={product.id} />
-                ))}
-            </div>
-          )}
+          <div className={styles["home__products-container"]}>
+            {httpState.loading &&
+              [1, 2, 3, 4].map((i) => {
+                return <ProductItemSkeleton key={i} />;
+              })}
+            {!httpState.loding &&
+              httpState.data &&
+              httpState.data.map((product) => (
+                <ProductItem product={product} key={product.id} />
+              ))}
+          </div>
         </section>
 
         <section className={styles.home__row}>

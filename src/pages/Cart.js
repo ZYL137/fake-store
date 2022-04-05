@@ -2,27 +2,27 @@ import { useSelector } from "react-redux";
 import { Link } from "react-router-dom";
 import CartItem from "../components/Cart/CartItem";
 import Subtotal from "../components/Cart/Subtotal";
-import styles from "../sass/pages/Checkout.module.scss";
+import styles from "../sass/pages/Cart.module.scss";
 
-function Checkout() {
+function Cart() {
   const cartState = useSelector((state) => state.cart);
 
   return (
-    <div className={styles.checkout}>
+    <div className={styles.cart}>
       {cartState.items.length === 0 && (
-        <div className={styles["checkout__empty-cart"]}>
-          <h2 className={styles.checkout__title}>Your Cart is empty</h2>
-          <Link to="/" className={styles.checkout__link}>
+        <div className={styles["cart__empty-cart"]}>
+          <h2 className={styles.cart__title}>Your Cart is empty</h2>
+          <Link to="/" className={styles.cart__link}>
             Continue Shopping
           </Link>
         </div>
       )}
       {cartState.items?.length > 0 && (
         <>
-          <div className={styles.checkout__left}>
-            <h2 className={styles.checkout__title}>Shopping Cart</h2>
-            <div className={styles.checkout__details}>
-              <p className={styles.checkout__heading}>
+          <div className={styles.cart__left}>
+            <h2 className={styles.cart__title}>Shopping Cart</h2>
+            <div className={styles.cart__details}>
+              <p className={styles.cart__heading}>
                 {cartState.totalQuantity} ITEMS
               </p>
 
@@ -31,7 +31,7 @@ function Checkout() {
               ))}
             </div>
           </div>
-          <div className={styles.checkout__right}>
+          <div className={styles.cart__right}>
             <Subtotal />
           </div>
         </>
@@ -40,4 +40,4 @@ function Checkout() {
   );
 }
 
-export default Checkout;
+export default Cart;

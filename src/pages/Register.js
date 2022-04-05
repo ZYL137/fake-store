@@ -2,8 +2,7 @@ import { useState } from "react";
 import { Link, useHistory } from "react-router-dom";
 import { auth, db } from "../firebase";
 import useInput from "../hooks/use-input";
-import Loader from "../components/UI/Loader";
-import Error from "../components/UI/Error";
+import ErrorMsg from "../components/UI/ErrorMsg";
 import styles from "../sass/pages/Register.module.scss";
 
 function Register() {
@@ -54,19 +53,19 @@ function Register() {
 
   const formSubmitHandler = (e) => {
     e.preventDefault();
-    if (!formIsValid) return;
+    if (!formIsValid || isLoading) return;
+
     setIsLoading(true);
     auth
       .createUserWithEmailAndPassword(enteredEmail, enteredPassword)
       .then((user) => {
+        setIsLoading(false);
         window.confirm("Successfully registered. Welcome to Fake Store!");
-
         user.user
           .updateProfile({ displayName: enteredName })
           .then(() => {})
           .catch((err) => alert(err));
 
-        setIsLoading(false);
         history.push("/");
         // Add new user to firestore
         db.collection("users").doc(user.user.uid).set({
@@ -93,8 +92,8 @@ function Register() {
       </Link>
       <form className={styles.register__form} onSubmit={formSubmitHandler}>
         <h1 className={styles.register__title}>Create account</h1>
-        {isLoading && <Loader />}
-        {isError && <Error>{isError}</Error>}
+
+        {isError && <ErrorMsg>{isError}</ErrorMsg>}
         <div className={styles["register__form-group"]}>
           <label htmlFor="name">Your name</label>
           <input
@@ -108,11 +107,7 @@ function Register() {
             onBlur={nameBlurHandler}
             onChange={nameChangeHandler}
           />
-          {nameHasError && (
-            <p className={styles["register__text--error"]}>
-              Please enter your name
-            </p>
-          )}
+          {nameHasError && <ErrorMsg> Please enter your name</ErrorMsg>}
         </div>
 
         <div className={styles["register__form-group"]}>
@@ -129,9 +124,7 @@ function Register() {
             onChange={emailChangeHandler}
           />
           {emailHasError && (
-            <p className={styles["register__text--error"]}>
-              Please enter a valid email address
-            </p>
+            <ErrorMsg>Please enter a valid email address</ErrorMsg>
           )}
         </div>
 
@@ -155,9 +148,7 @@ function Register() {
             </p>
           )}
           {passwordHasError && (
-            <p className={styles["register__text--error"]}>
-              Minimum 6 characters required
-            </p>
+            <ErrorMsg>Minimum 6 characters required</ErrorMsg>
           )}
         </div>
         <div className={styles["register__form-group"]}>
@@ -173,14 +164,15 @@ function Register() {
             onBlur={confirmPasswordBlurHandler}
             onChange={confirmPasswordChangeHandler}
           />
-          {confirmPasswordHasError && (
-            <p className={styles["register__text--error"]}>
-              Passwords must match
-            </p>
-          )}
+          {confirmPasswordHasError && <ErrorMsg>Passwords must match</ErrorMsg>}
         </div>
 
-        {!isLoading && <button className={styles.register__btn}>Submit</button>}
+        <button
+          className={styles.register__btn}
+          aria-disabled={isLoading && true}
+        >
+          Submit
+        </button>
 
         <p className={styles.register__text}>
           By creating an account, you agree to the Terms and Privacy Policy.

@@ -4,64 +4,8 @@ import { Provider } from "react-redux";
 import userReducer from "./store/user-slice";
 import cartReducer from "./store/cart-slice";
 import searchReducer from "./store/search-slice";
-import { MemoryRouter, BrowserRouter } from "react-router-dom";
+import { MemoryRouter } from "react-router-dom";
 
-// test utils file
-
-// function render(
-//   ui,
-//   {
-//     preloadedState,
-//     store = configureStore({
-//       reducer: {
-//         user: userReducer,
-//         cart: cartReducer,
-//         search: searchReducer,
-//       },
-//       preloadedState,
-//     }),
-//     ...renderOptions
-//   } = {}
-// ) {
-//   function Wrapper({ children }) {
-//     return (
-//       <Provider store={store}>
-//         <MemoryRouter>{children}</MemoryRouter>
-//       </Provider>
-//     );
-//   }
-
-//   return rtlRender(ui, { wrapper: Wrapper, ...renderOptions });
-// }
-
-// function render(
-//   ui,
-//   {
-//     preloadedState,
-//     store = configureStore({
-//       reducer: {
-//         user: userReducer,
-//         cart: cartReducer,
-//         search: searchReducer,
-//       },
-//       preloadedState,
-//     }),
-//     route = "/",
-//     ...renderOptions
-//   } = {}
-// ) {
-//   window.history.pushState({}, "Test page", route);
-
-//   function Wrapper({ children }) {
-//     return (
-//       <Provider store={store}>
-//         <MemoryRouter>{children}</MemoryRouter>
-//       </Provider>
-//     );
-//   }
-
-//   return rtlRender(ui, { wrapper: Wrapper, ...renderOptions });
-// }
 
 const reducer = {
   user: userReducer,
@@ -72,15 +16,7 @@ const reducer = {
 const store = configureStore({
   reducer,
 });
-// export function getStoreWithState(preloadedState) {
-//   return configureStore({ reducer, preloadedState });
-// }
 
-// export function renderWithContext(element, state) {
-//   const store = getStoreWithState(state);
-//   const utils = render(<Provider store={store}>{element}</Provider>);
-//   return { store, ...utils };
-// }
 
 const MemoryRouterWithInitialRoutes = ({ children, initialRoutes }) => (
   <MemoryRouter initialEntries={initialRoutes}>

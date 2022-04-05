@@ -57,9 +57,8 @@
     margin: 1rem 0;
 
     &[aria-disabled="true"] {
-      background: rgb(226, 225, 225);
-      color: #000;
-      cursor: not-allowed;
+      background: #ddd;
+      color: general.$color-primary-dark;
     }
   }
 

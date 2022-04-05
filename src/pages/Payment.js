@@ -1,8 +1,7 @@
 import { CardElement, useElements, useStripe } from "@stripe/react-stripe-js";
-import { useEffect, useState } from "react";
+import { useEffect, useRef, useState } from "react";
 import CurrencyFormat from "react-currency-format";
 import CartItem from "../components/Cart/CartItem";
-import Loader from "../components/UI/Loader";
 import { firebaseAxios } from "../axios";
 import { useHistory } from "react-router-dom";
 import { useSelector, useDispatch } from "react-redux";
@@ -24,8 +23,8 @@ function Payment() {
     (state) => state.cart
   );
   const { user } = useSelector((state) => state.user);
-
   const history = useHistory();
+  const btnRef = useRef();
 
   useEffect(() => {
     // generate the special stripe secret which allow us to charge customers
@@ -37,9 +36,8 @@ function Payment() {
       });
       setClientSecret(res.data.clientSecret);
     };
-
     getClientSecret();
-  }, [totalAmount]);
+  }, [totalAmount, user, history]);
 
   // setting style of CardElement
   const cardStyle = {
@@ -55,9 +53,24 @@ function Payment() {
     },
   };
 
+  const cardChangeHandler = (e) => {
+    // Listen for changes in the CardElement
+    // and display any errors as the customer types their card details
+    setDisabled(e.empty);
+    setError(e.error?.message || "");
+  };
+
   const formSubmitHandler = async (e) => {
     e.preventDefault();
     if (!stripe || !elements) return;
+    if (btnRef.current.getAttribute("aria-disabled") && (disabled || error)) {
+      return setError("Please enter valid card informations");
+    } else if (
+      btnRef.current.getAttribute("aria-disabled" && (processing || succeeded))
+    ) {
+      return;
+    }
+
     setProcessing(true);
     await stripe
       .confirmCardPayment(clientSecret, {
@@ -72,19 +85,12 @@ function Payment() {
         setProcessing(false);
         setError(null);
         dispatch(cartActions.emptyCart());
-        history.replace("/orders");
+        history.replace("/account/orders");
       })
       .catch(({ error: stripeError }) => {
         setError(stripeError.message);
         setProcessing(false);
       });
-  };
-
-  const cardChangeHandler = (e) => {
-    // Listen for changes in the CardElement
-    // and display any errors as the customer types their card details
-    setDisabled(e.empty);
-    setError(e.error?.message || "");
   };
 
   return (
@@ -144,15 +150,12 @@ function Payment() {
             <CardElement options={cardStyle} onChange={cardChangeHandler} />
             {error && <div className={styles.payment__error}>{error}</div>}
             <button
-              disabled={disabled || processing || succeeded || error}
               className={styles.payment__btn}
-              aria-disabled={
-                disabled || processing || succeeded || error ? true : false
-              }
+              aria-disabled={disabled || processing || succeeded || error}
+              ref={btnRef}
             >
               <span>{processing ? "Processing..." : "Buy Now"}</span>
             </button>
-            {processing && <Loader />}
           </form>
         </div>
       </div>

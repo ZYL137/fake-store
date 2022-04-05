@@ -9,23 +9,23 @@ import styles from "../../sass/layout/Header.module.scss";
 function Header() {
   const { user } = useSelector((state) => state.user);
   const { totalQuantity } = useSelector((state) => state.cart);
-
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
+  const [popupShown, setPopupShown] = useState(false);
   const history = useHistory();
 
-  const authenticationHandler = () => {
+  const logoutHandler = () => {
     if (user) {
       auth.signOut();
       history.push("/");
     }
   };
 
-  const showUserOptionsHandler = () => {
-    document.getElementById("option-user").focus();
+  const showPopupHandler = () => {
+    setPopupShown(true);
   };
 
-  const hideUserOptionsHandler = () => {
-    document.getElementById("option-user").blur();
+  const hidePopupHandler = () => {
+    setPopupShown(false);
   };
 
   const setMobileMenuHandler = () => {
@@ -33,108 +33,116 @@ function Header() {
   };
 
   return (
-    <header className={styles.header}>
-      <nav
-        className={`${styles.header__nav} ${
-          mobileMenuOpen ? styles["header__menu--open"] : ""
-        }`}
-      >
-        <Link to="/">
-          <img
-            className={styles.header__logo}
-            // srcSet="../../assets/logo-1x.png 1x, ../../assets/logo-2x.png 2x"
-            src="../../assets/logo.avif"
-            alt="Fake store logo"
-          />
-        </Link>
-
-        <div>
-          <ul className={styles["header__nav-links"]}>
-            <li>
-              <NavLink
-                to="/products/category/women's clothing"
-                className={styles["header__nav-link"]}
-                onClick={setMobileMenuHandler}
-              >
-                Women
-              </NavLink>
-            </li>
-            <li>
-              <NavLink
-                to="/products/category/men's clothing"
-                className={styles["header__nav-link"]}
-                onClick={setMobileMenuHandler}
-              >
-                Men
-              </NavLink>
-            </li>
-            <li>
-              <NavLink
-                to="/products/category/jewelery"
-                className={styles["header__nav-link"]}
-                onClick={setMobileMenuHandler}
-              >
-                Jewelery
-              </NavLink>
-            </li>
-          </ul>
-        </div>
-
-        <div className={styles["header__option"]}>
-          <SearchBar />
-          <button className={styles["header__option-btn"]} aria-label="Account">
-            <UserIcon
-              className={styles.header__icon}
-              onClick={showUserOptionsHandler}
+    <>
+      <header className={styles.header}>
+        <nav
+          className={`${styles.header__nav} ${
+            mobileMenuOpen ? styles["header__menu--open"] : ""
+          }`}
+        >
+          <Link to="/">
+            <img
+              className={styles.header__logo}
+              src="../../assets/logo.avif"
+              alt="Fake store logo"
             />
-          </button>
-          {
-            <div
-              tabIndex="0"
-              className={styles["header__option-user"]}
-              id="option-user"
-              onBlur={hideUserOptionsHandler}
-            >
-              {!user && (
-                <Link
-                  to="/login"
-                  className={styles["header__option-link"]}
-                  onMouseDown={(e) => e.preventDefault()} //prevent blur() to be called
-                >
-                  <p>Login</p>
-                </Link>
-              )}
-              {user && (
-                <>
-                  <Link
-                    to="/orders"
-                    className={styles["header__option-link"]}
-                    onMouseDown={(e) => e.preventDefault()} //prevent blur() to be called
-                  >
-                    <p>Orders</p>
-                  </Link>
-                  <p onClick={authenticationHandler}>Logout</p>
-                </>
-              )}
-            </div>
-          }
-          <Link to="/checkout" className={styles["header__option-link"]}>
-            <div className={styles["header__option-cart"]}>
-              <ShoppingCartIcon className={styles.header__icon} />
-              <span className={styles["header__option-cart-count"]}>
-                ({totalQuantity})
-              </span>
-            </div>
           </Link>
-          <button
-            className={styles["header__menu-btn"]}
-            onClick={setMobileMenuHandler}
+
+          <div>
+            <ul className={styles["header__nav-links"]}>
+              <li>
+                <NavLink
+                  to="/products/category/women's clothing"
+                  className={styles["header__nav-link"]}
+                  onClick={setMobileMenuHandler}
+                >
+                  Women
+                </NavLink>
+              </li>
+              <li>
+                <NavLink
+                  to="/products/category/men's clothing"
+                  className={styles["header__nav-link"]}
+                  onClick={setMobileMenuHandler}
+                >
+                  Men
+                </NavLink>
+              </li>
+              <li>
+                <NavLink
+                  to="/products/category/jewelery"
+                  className={styles["header__nav-link"]}
+                  onClick={setMobileMenuHandler}
+                >
+                  Jewelery
+                </NavLink>
+              </li>
+            </ul>
+          </div>
+
+          <div className={styles["header__option"]}>
+            <SearchBar />
+
+            <div className={styles["header__option-user"]}>
+              <UserIcon
+                className={styles.header__icon}
+                onMouseOver={showPopupHandler}
+                onClick={showPopupHandler}
+              />
+            </div>
+
+            <Link to="/cart" className={styles["header__option-link"]}>
+              <div className={styles["header__option-cart"]}>
+                <ShoppingCartIcon className={styles.header__icon} />
+                <span className={styles["header__option-cart-count"]}>
+                  ({totalQuantity})
+                </span>
+              </div>
+            </Link>
+            <button
+              className={styles["header__menu-btn"]}
+              onClick={setMobileMenuHandler}
+            >
+              <span className={styles["header__menu-icon"]}>&nbsp;</span>
+            </button>
+          </div>
+        </nav>
+      </header>
+
+      <div
+        className={`${styles["header__option-popup"]} ${
+          popupShown && styles["header__option-popup--show"]
+        }`}
+        onMouseLeave={hidePopupHandler}
+      >
+        {!user && (
+          <Link
+            to="/login"
+            className={styles["header__option-popup-link"]}
+            onClick={hidePopupHandler}
           >
-            <span className={styles["header__menu-icon"]}>&nbsp;</span>
-          </button>
-        </div>
-      </nav>
-    </header>
+            Login
+          </Link>
+        )}
+        {user && (
+          <>
+            <Link
+              to="/account"
+              className={styles["header__option-popup-link"]}
+              onClick={hidePopupHandler}
+            >
+              Account
+            </Link>
+            <button
+              className={styles["header__option-popup-btn"]}
+              onClick={logoutHandler}
+            >
+              Logout
+            </button>
+          </>
+        )}
+      </div>
+    </>
   );
 }
 

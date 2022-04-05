@@ -5,7 +5,7 @@ const mainAxios = axios.create({
 });
 
 const firebaseAxios = axios.create({
-  baseURL: "https://us-central1-clone-76cf8.cloudfunctions.net/api",
+  baseURL: "https://us-central1-fake-store-4dd9e.cloudfunctions.net/api",
 });
 
 export { mainAxios, firebaseAxios };

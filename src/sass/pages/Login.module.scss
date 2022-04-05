@@ -55,6 +55,12 @@
   &__btn {
     @include general.btn;
     margin-bottom: 0.5rem;
+
+    &[aria-disabled="true"] {
+      background: #ccc;
+      cursor: wait;
+      pointer-events: none;
+    }
   }
 
   &__divider {

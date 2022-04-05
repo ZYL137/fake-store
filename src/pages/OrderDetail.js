@@ -1,8 +1,8 @@
 import { useParams } from "react-router-dom";
 import moment from "moment";
 import { useSelector } from "react-redux";
-import styles from "../sass/pages/OrderDetail.module.scss";
 import CartItem from "../components/Cart/CartItem";
+import styles from "../sass/pages/OrderDetail.module.scss";
 
 function OrderDetail() {
   const { orderId } = useParams();

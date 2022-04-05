@@ -1,14 +1,5 @@
 {
   "projects": {
-    "default": "clone-76cf8"
-  },
-  "targets": {
-    "clone-76cf8": {
-      "hosting": {
-        "default": [
-          "fakestore-1"
-        ]
-      }
-    }
+    "default": "fake-store-4dd9e"
   }
 }

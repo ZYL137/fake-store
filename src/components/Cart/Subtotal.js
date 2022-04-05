@@ -1,24 +1,17 @@
 import CurrencyFormat from "react-currency-format";
 import { useSelector } from "react-redux";
 import { useHistory } from "react-router-dom";
-import styles from "../../sass/components/Subtotal.module.scss";
+import styles from "../../sass/components/cart/Subtotal.module.scss";
 
 function Subtotal() {
   const cartState = useSelector((state) => state.cart);
-  const { user } = useSelector((state) => state.user);
   const histroy = useHistory();
 
   const checkoutHandler = (e) => {
     const isDisabled = e.target.getAttribute("aria-disabled") === "true";
     if (isDisabled) return;
 
-    // Check if user is logged in
-    if (user) {
-      histroy.push("/payment");
-    } else {
-      // If uses not logged in redirect to login page
-      histroy.push("/login");
-    }
+    histroy.push("/payment");
   };
 
   return (

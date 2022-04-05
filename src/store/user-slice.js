@@ -16,26 +16,6 @@ const userSlice = createSlice({
 
 export const userActions = userSlice.actions;
 
-// export const setUserCart = (authUser) => {
-//   return (dispatch) => {
-//     // Get cart data
-//     db.collection("users")
-//       .doc(authUser.uid)
-//       .collection("cart")
-//       .onSnapshot((snapshot) => {
-//         snapshot.forEach((doc) => {
-//           dispatch(
-//             cartActions.setCartState({
-//               items: doc.data().items || [],
-//               totalAmount: doc.data().totalAmount || 0,
-//               totalQuantity: doc.data().totalQuantity || 0,
-//             })
-//           );
-//         });
-//       });
-//   };
-// };
-
 export const setUserOrders = (authUser) => {
   return (dispatch) => {
     db.collection("users")
@@ -81,6 +61,22 @@ export const sendUserCartData = (authUser, cartState) => {
       .collection("cart")
       .doc("details")
       .set(cartState, { merge: true });
+};
+
+export const deleteUserOrder = (authUser, orderId) => {
+  return (dispatch) =>
+    db
+      .collection("users")
+      .doc(authUser?.uid)
+      .collection("orders")
+      .doc(orderId)
+      .delete()
+      .then(() => {
+        dispatch(setUserOrders);
+      })
+      .catch((error) => {
+        console.error("Error removing document: ", error);
+      });
 };
 
 export default userSlice.reducer;

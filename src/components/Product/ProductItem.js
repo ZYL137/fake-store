@@ -2,7 +2,7 @@ import { Link } from "react-router-dom";
 import { useDispatch } from "react-redux";
 import { cartActions } from "../../store/cart-slice";
 
-import styles from "../../sass/components/ProductItem.module.scss";
+import styles from "../../sass/components/product/ProductItem.module.scss";
 
 function ProductItem({ product }) {
   const dispatch = useDispatch();

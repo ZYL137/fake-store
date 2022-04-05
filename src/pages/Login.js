@@ -2,9 +2,8 @@ import { useRef, useState } from "react";
 import { useHistory } from "react-router-dom";
 import { Link } from "react-router-dom";
 import { auth } from "../firebase";
-import Loader from "../components/UI/Loader";
 import styles from "../sass/pages/Login.module.scss";
-import Error from "../components/UI/Error";
+import ErrorMsg from "../components/UI/ErrorMsg";
 
 function Login() {
   const history = useHistory();
@@ -15,6 +14,7 @@ function Login() {
 
   const formSubmitHandler = (e) => {
     e.preventDefault();
+    if (isLoading) return;
     setIsLoading(true);
     const email = emailInputRef.current.value;
     const password = passwordInputRef.current.value;
@@ -23,7 +23,7 @@ function Login() {
       .signInWithEmailAndPassword(email, password)
       .then(() => {
         setIsLoading(false);
-        history.push("/");
+        history.goBack();
       })
       .catch((err) => {
         setIsLoading(false);
@@ -53,7 +53,7 @@ function Login() {
           <h1>Log in</h1>
           <p>Welcome back</p>
         </div>
-        {isError && <Error>{isError}</Error>}
+        {isError && <ErrorMsg>{isError}</ErrorMsg>}
         <form className={styles.login__form} onSubmit={formSubmitHandler}>
           <div className={styles["login__form-group"]}>
             <label htmlFor="email">E-mail</label>
@@ -75,8 +75,12 @@ function Login() {
               required
             />
           </div>
-          <button className={styles.login__btn}>Log in</button>
-          {isLoading && <Loader />}
+          <button
+            className={styles.login__btn}
+            aria-disabled={isLoading && true}
+          >
+            Log in
+          </button>
         </form>
         <p className={styles.login__text}>
           By continuing, you agree to you agree to the Terms and Privacy Policy.

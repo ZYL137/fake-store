@@ -1,7 +1,7 @@
 import { useDispatch } from "react-redux";
 import { cartActions } from "../../store/cart-slice";
 import { Link } from "react-router-dom";
-import styles from "../../sass/components/CartItem.module.scss";
+import styles from "../../sass/components/cart/CartItem.module.scss";
 
 function CartItem({ item, hideBtn }) {
   const dispatch = useDispatch();
