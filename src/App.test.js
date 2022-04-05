@@ -31,7 +31,7 @@ describe("<App/>", () => {
   });
 
   test("renders checkout page", () => {
-    render(<App />, { initialRoutes: ["/checkout"] });
+    render(<App />, { initialRoutes: ["/cart"] });
     expect(screen.getByText(/cart/i)).toBeInTheDocument();
   });
 
