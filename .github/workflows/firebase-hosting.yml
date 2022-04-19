@@ -2,7 +2,7 @@ name: Firebase Deploy
 "on":
   push:
     branches:
-      - main
+      - mainE
 jobs:
   build:
     name: Build
@@ -39,6 +39,6 @@ jobs:
         uses: FirebaseExtended/action-hosting-deploy@v0
         with:
           repoToken: "${{ secrets.GITHUB_TOKEN }}"
-          firebaseServiceAccount: "${{ secrets.FIREBASE_SERVICE_ACCOUNT_CLONE_76CF8 }}"
+          firebaseServiceAccount: "${{ secrets.FIREBASE_SERVICE_ACCOUNT_FAKE_STORE_4DD9E }}"
           channelId: live
-          projectId: clone-76cf8
+          projectId: fake-store-4dd9e
