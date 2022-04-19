@@ -63,7 +63,7 @@ Fakestore 是一個使用 React 與串接第三方 API [Fake Store API](https://
 - 會員專區：會員登入後可檢視或編輯個人資料、訂單紀錄。
 
 ![](https://github.com/ZYL137/fake-store/blob/main/.github/img/register.gif)
-![](https://github.com/ZYL137/fake-store/blob/main/.github/img/account.gif)
+![](https://github.com/ZYL137/fake-store/blob/main/.github/img/account-1.gif)
 
 #### `搜尋模組`
 
