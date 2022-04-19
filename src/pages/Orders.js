@@ -55,11 +55,11 @@ function Orders() {
                     />
                   </Link>
                   <div className={styles.orders__info}>
-                    <div className={styles["orders__text-box"]}>
+                    <div className={styles["orders__info-text"]}>
                       <p className={styles.orders__heading}>ORDER NUMBER:</p>
                       <p>{order.id}</p>
                     </div>
-                    <div className={styles["orders__text-box"]}>
+                    <div>
                       <p className={styles.orders__heading}>ORDER DATE: </p>
                       <p>
                         {moment

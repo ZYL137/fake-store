@@ -29,10 +29,13 @@ function Login() {
         setIsLoading(false);
         const errorCode = err.code;
         let errorMessage;
-        if (errorCode === "auth/user-not-found" || "auth/invalid-email") {
-          errorMessage = "Incorrect email. Please try again.";
-        } else if (errorCode === "auth/wrong-password") {
+        if (errorCode === "auth/wrong-password") {
           errorMessage = "Incorrect password. Please try again.";
+        } else if (
+          errorCode === "auth/user-not-found" ||
+          "auth/invalid-email"
+        ) {
+          errorMessage = "Incorrect email. Please try again.";
         }
         setIsError(errorMessage);
         alert(errorMessage);

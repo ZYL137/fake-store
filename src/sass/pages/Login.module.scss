@@ -59,6 +59,8 @@
     &[aria-disabled="true"] {
       background: #ccc;
       cursor: wait;
+    }
+    &[aria-disabled="true"]:active {
       pointer-events: none;
     }
   }

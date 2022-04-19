@@ -31,7 +31,7 @@ const httpReducer = (httpState, action) => {
   }
 };
 
-function useHttp() {
+const useHttp = () => {
   const [httpState, dispatchHttp] = useReducer(httpReducer, initialHttpState);
 
   const sendRequest = useCallback(async (url) => {
@@ -51,6 +51,6 @@ function useHttp() {
     httpState,
     sendRequest,
   };
-}
+};
 
 export default useHttp;

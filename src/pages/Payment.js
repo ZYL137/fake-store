@@ -80,12 +80,12 @@ function Payment() {
       })
       .then(({ paymentIntent }) => {
         dispatch(sendUserOrdersData(user, paymentIntent, items));
+        dispatch(cartActions.emptyCart());
+        history.replace("/account/orders");
         setDisabled(true);
         setSucceeded(true);
         setProcessing(false);
         setError(null);
-        dispatch(cartActions.emptyCart());
-        history.replace("/account/orders");
       })
       .catch(({ error: stripeError }) => {
         setError(stripeError.message);

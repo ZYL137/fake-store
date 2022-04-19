@@ -11,12 +11,14 @@ import useHttp from "../hooks/use-http";
 import { cartActions } from "../store/cart-slice";
 import Loader from "../components/UI/Loader";
 import styles from "../sass/pages/ProductDetail.module.scss";
+import { useHistory } from "react-router-dom";
 
 function ProductDetail() {
   const dispatch = useDispatch();
   const { httpState, sendRequest } = useHttp();
   const { productId } = useParams();
   const [quantity, setQuantity] = useState(1);
+  const history = useHistory();
 
   useEffect(() => {
     sendRequest(`/products/${productId}`);
@@ -31,6 +33,7 @@ function ProductDetail() {
 
   const addToCartHandler = () => {
     dispatch(cartActions.addItemToCart({ ...httpState.data, quantity }));
+    history.push("/cart");
   };
 
   return (

@@ -30,7 +30,6 @@ let initial = true;
 function App() {
   // lazy loading
   const Account = lazy(() => import("./pages/Account"));
-
   const SearchResults = lazy(() => import("./pages/SearchResults"));
   const Payment = lazy(() => import("./pages/Payment"));
   const NotFound = lazy(() => import("./pages/NotFound"));

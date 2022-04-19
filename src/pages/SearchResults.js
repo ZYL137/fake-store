@@ -39,8 +39,8 @@ function SearchResults() {
         searchData.results !== null &&
         searchData.results.length === 0 && (
           <h1 className={styles["sarch-results__not-found"]}>
-            We're sorry! We couldn't find any results for <span>"{query}"</span>
-            .
+            We're sorry! We couldn't find any results for
+            <span>{` "${query}".`}</span>
             <br />
             Please try again
           </h1>
@@ -52,7 +52,7 @@ function SearchResults() {
             <div className={styles["sarch-results__counts"]}>
               <p>
                 {searchData.results.length} results for
-                <span> "{searchData.query}"</span>
+                <span>{` "${searchData.query}"`}</span>
               </p>
             </div>
             <div className={styles["sarch-results__content"]}>
