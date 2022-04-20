@@ -8,7 +8,7 @@
 
 ## 專案介紹
 
-Fakestore 是一個使用 React 與串接第三方 API [Fake Store API](https://fakestoreapi.com/) 開發的購物網站
+Fakestore 是一個使用 React 與第三方 API [Fake Store API](https://fakestoreapi.com/) 開發的購物網站
 
 ![Home Page](https://github.com/ZYL137/fake-store/blob/main/.github/img/Home.png)
 
