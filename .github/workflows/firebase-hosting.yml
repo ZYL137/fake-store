@@ -37,8 +37,8 @@ jobs:
           path: build
       - name: Deploy to Firebase
         uses: FirebaseExtended/action-hosting-deploy@v0
-        with:
-          repoToken: "${{ secrets.GITHUB_TOKEN }}"
-          firebaseServiceAccount: "${{ secrets.FIREBASE_SERVICE_ACCOUNT_FAKE_STORE_4DD9E }}"
-          channelId: live
-          projectId: fake-store-4dd9e
+    with:
+      repoToken: "${{ secrets.GITHUB_TOKEN }}"
+      firebaseServiceAccount: "${{ secrets.FIREBASE_SERVICE_ACCOUNT_FAKE_STORE_4DD9E }}"
+      channelId: live
+      projectId: fake-store-4dd9e
