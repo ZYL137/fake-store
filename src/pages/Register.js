@@ -60,13 +60,12 @@ function Register() {
       .createUserWithEmailAndPassword(enteredEmail, enteredPassword)
       .then((user) => {
         setIsLoading(false);
-        window.confirm("Successfully registered. Welcome to Fake Store!");
+        history.push("/");
         user.user
           .updateProfile({ displayName: enteredName })
           .then(() => {})
           .catch((err) => alert(err));
 
-        history.push("/");
         // Add new user to firestore
         db.collection("users").doc(user.user.uid).set({
           uid: user.user.uid,
@@ -77,7 +76,6 @@ function Register() {
       .catch((err) => {
         setIsLoading(false);
         setIsError(err.message);
-        alert(err.message);
       });
   };
 

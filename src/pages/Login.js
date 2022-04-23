@@ -38,7 +38,6 @@ function Login() {
           errorMessage = "Incorrect email. Please try again.";
         }
         setIsError(errorMessage);
-        alert(errorMessage);
       });
   };
 
