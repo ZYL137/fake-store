@@ -1,6 +1,8 @@
 import { lazy, Suspense, useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
-import { Route, Switch, useLocation } from "react-router-dom";
+import { Route, Switch, useLocation, Redirect } from "react-router-dom";
+import { loadStripe } from "@stripe/stripe-js";
+import { Elements } from "@stripe/react-stripe-js";
 import { auth } from "./firebase";
 import Cart from "./pages/Cart";
 import Header from "./components/Layout/Header";
@@ -8,8 +10,7 @@ import Home from "./pages/Home";
 import Login from "./pages/Login";
 import Register from "./pages/Register";
 import Products from "./pages/Products";
-import { loadStripe } from "@stripe/stripe-js";
-import { Elements } from "@stripe/react-stripe-js";
+import ScrollToTop from "./components/ScrollToTop";
 import Footer from "./components/Layout/Footer";
 import Loader from "./components/UI/Loader";
 import {
@@ -19,8 +20,6 @@ import {
 } from "./store/user-slice";
 import { cartActions, setUserCart } from "./store/cart-slice";
 import "./App.scss";
-import ScrollToTop from "./components/ScrollToTop";
-import { Redirect } from "react-router-dom";
 
 const stripePromise = loadStripe(
   "pk_test_51KJv1gGy4ZQV36EXZJq2RCuZZK8bq7LFGKJHPvg90uBMhUdbFKUYCQoozds0utcFmNvmgzXXjdSSOwaU8y8C2jAT00BevdgEZo"

@@ -5,6 +5,7 @@ $color-primary-light--3: #886f6f;
 
 $color-primary: #694e4e;
 $color-primary-dark: #1f1717;
+$color-primary-dark--1: #1b1414;
 $color-text: #0a0808;
 
 // RESPONSIVE BREAKPOINTS
@@ -38,7 +39,7 @@ $bp-smallest: 23.75em; // 380px;
     background: $color-primary-dark;
   }
   &:active {
-    transform: translateY(1px);
+    background: $color-primary-dark--1;
   }
 }
 

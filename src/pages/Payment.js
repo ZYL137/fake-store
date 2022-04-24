@@ -72,6 +72,7 @@ function Payment() {
     }
 
     setProcessing(true);
+
     await stripe
       .confirmCardPayment(clientSecret, {
         payment_method: {

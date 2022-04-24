@@ -1,4 +1,4 @@
-import { useEffect, useState } from "react";
+import { useEffect } from "react";
 import { Link } from "react-router-dom";
 import useHttp from "../hooks/use-http";
 import ProductItem from "../components/Product/ProductItem";
@@ -7,16 +7,10 @@ import styles from "../sass/pages/Home.module.scss";
 
 function Home() {
   const { httpState, sendRequest } = useHttp();
-  const [isMounted, setIsMounted] = useState(true);
 
   useEffect(() => {
-    if (isMounted) {
-      sendRequest("/products?limit=4");
-    }
-    return () => {
-      setIsMounted(false);
-    };
-  }, [sendRequest, isMounted]);
+    sendRequest("/products?limit=4");
+  }, [sendRequest]);
 
   return (
     <div className={styles.home}>

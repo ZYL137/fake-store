@@ -38,7 +38,6 @@ const useHttp = () => {
     try {
       dispatchHttp({ type: "SEND" });
       const res = await mainAxios.get(url);
-
       const data = res.data;
 
       dispatchHttp({ type: "RESPONSE", data });

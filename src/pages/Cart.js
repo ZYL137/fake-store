@@ -25,7 +25,6 @@ function Cart() {
               <p className={styles.cart__heading}>
                 {cartState.totalQuantity} ITEMS
               </p>
-
               {cartState.items.map((item) => (
                 <CartItem key={item.id} item={item} />
               ))}

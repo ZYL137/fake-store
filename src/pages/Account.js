@@ -2,7 +2,7 @@ import { lazy, Suspense } from "react";
 import { NavLink } from "react-router-dom";
 import { Switch, Route, useRouteMatch } from "react-router-dom";
 import Loader from "../components/UI/Loader";
-import Profile from "../components/User/Profile";
+import Profile from "./Profile";
 import styles from "../sass/pages/Account.module.scss";
 
 function Account() {

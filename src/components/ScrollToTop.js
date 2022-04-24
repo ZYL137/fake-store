@@ -1,20 +1,14 @@
 import { useEffect } from "react";
-import { useHistory } from "react-router-dom";
+import { useLocation } from "react-router-dom";
 
-function ScrollToTop() {
-  const history = useHistory();
+const ScrollToTop = () => {
+  const { pathname } = useLocation();
 
   useEffect(() => {
-    const unlisten = history.listen((location, action) => {
-      if (action !== "POP") {
-        window.scrollTo(0, 0);
-      }
-    });
-
-    return () => unlisten();
-  }, [history]);
+    window.scrollTo(0, 0);
+  }, [pathname]);
 
   return null;
-}
+};
 
 export default ScrollToTop;
