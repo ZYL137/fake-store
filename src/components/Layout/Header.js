@@ -84,11 +84,16 @@ function Header() {
             <SearchBar />
 
             <div className={styles["header__option-user"]}>
-              <UserIcon
-                className={styles.header__icon}
-                onMouseOver={showPopupHandler}
-                onClick={showPopupHandler}
-              />
+              <Link
+                to={!user ? "/login" : "/account"}
+                className={styles["header__option-link"]}
+              >
+                <UserIcon
+                  className={styles.header__icon}
+                  onMouseOver={showPopupHandler}
+                  onClick={showPopupHandler}
+                />
+              </Link>
             </div>
 
             <Link to="/cart" className={styles["header__option-link"]}>
@@ -115,15 +120,6 @@ function Header() {
         }`}
         onMouseLeave={hidePopupHandler}
       >
-        {!user && (
-          <Link
-            to="/login"
-            className={styles["header__option-popup-link"]}
-            onClick={hidePopupHandler}
-          >
-            Login
-          </Link>
-        )}
         {user && (
           <>
             <Link
